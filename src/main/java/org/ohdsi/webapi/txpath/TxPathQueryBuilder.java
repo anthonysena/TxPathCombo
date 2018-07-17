@@ -197,7 +197,7 @@ public class TxPathQueryBuilder {
 			for(ComboExpression ce : comboExpressionList) {
 				comboName.append("\t\t\tWHEN " + ce.comparisons + " THEN " + ce.textDisplay + "\n");
 			}
-			comboName.append("\t\t\tELSE 'combo missing'\n\t\tEND\n");
+			comboName.append("\t\t\tELSE 'combo missing'\n\t\tEND ");
 		}
 		
 		return comboName.toString();
@@ -350,8 +350,8 @@ public class TxPathQueryBuilder {
 		
 		// Create an array list that is sorted by preserves the original order
 		for (int i = 0; i < sortedIndices.length; i++) {
-			int index = sortedIndices[i] + 1;
-			textForDisplay[i] = prefix + index + tableDelmiter + suffix;
+			int index = sortedIndices[i];
+			textForDisplay[index] = prefix + Integer.toString(listToCompare.get(index)) + tableDelmiter + suffix;
 		}
 		
 		for (int i = 0; i < textForDisplay.length; i++) {
